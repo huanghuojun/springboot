@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3308/test
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.spencer.springboot.po
+  config-location: classpath:mybatis-config.xml
