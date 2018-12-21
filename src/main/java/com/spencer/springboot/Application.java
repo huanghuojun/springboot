@@ -21,7 +21,7 @@ public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(com.spencer.springboot.springbootmybatisdemo.SpringbootMybatisDemoApplication.class, args);
+        SpringApplication.run(Application.class, args);
         logger.info("SpringBoot Start Success");
     }
 

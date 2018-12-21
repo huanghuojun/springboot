@@ -149,4 +149,40 @@
       url = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateStatus">
+    UPDATE
+    classic
+    SET like_status = #{like_status}
+    WHERE id = #{id} and type = #{type}
+  </update>
+
+  <select id="selectLatest" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from classic
+    ORDER BY indexes DESC LIMIT 0,1
+  </select>
+
+  <select id="selectNext" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from classic
+    WHERE indexes = #{indexes}
+  </select>
+
+  <select id="selectPrevious" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from classic
+    WHERE indexes = #{indexes}
+  </select>
+
+  <select id="selectClassic" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from classic
+    WHERE id = #{id} and type = #{type}
+  </select>
+
 </mapper>
