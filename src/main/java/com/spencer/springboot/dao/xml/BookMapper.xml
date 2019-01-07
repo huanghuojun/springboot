@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spencer.springboot.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.spencer.springboot.po.Book">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="fav_nums" jdbcType="BIGINT" property="favNums" />
+    <result column="large_image" jdbcType="VARCHAR" property="largeImage" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="like_status" jdbcType="BIGINT" property="likeStatus" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="pages" jdbcType="VARCHAR" property="pages" />
+    <result column="isbn" jdbcType="VARCHAR" property="isbn" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="binding" jdbcType="VARCHAR" property="binding" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="pubdate" jdbcType="VARCHAR" property="pubdate" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, author, fav_nums, large_image, image, like_status, title, sub_title, summary, 
+    price, pages, isbn, category, binding, publisher, pubdate, translator
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from book
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.spencer.springboot.po.Book">
+    insert into book (id, author, fav_nums, 
+      large_image, image, like_status, 
+      title, sub_title, summary, 
+      price, pages, isbn, 
+      category, binding, publisher, 
+      pubdate, translator)
+    values (#{id,jdbcType=BIGINT}, #{author,jdbcType=VARCHAR}, #{favNums,jdbcType=BIGINT}, 
+      #{largeImage,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{likeStatus,jdbcType=BIGINT}, 
+      #{title,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{price,jdbcType=VARCHAR}, #{pages,jdbcType=VARCHAR}, #{isbn,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{binding,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, 
+      #{pubdate,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spencer.springboot.po.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="favNums != null">
+        fav_nums,
+      </if>
+      <if test="largeImage != null">
+        large_image,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="likeStatus != null">
+        like_status,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="subTitle != null">
+        sub_title,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="pages != null">
+        pages,
+      </if>
+      <if test="isbn != null">
+        isbn,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="binding != null">
+        binding,
+      </if>
+      <if test="publisher != null">
+        publisher,
+      </if>
+      <if test="pubdate != null">
+        pubdate,
+      </if>
+      <if test="translator != null">
+        translator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="favNums != null">
+        #{favNums,jdbcType=BIGINT},
+      </if>
+      <if test="largeImage != null">
+        #{largeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="likeStatus != null">
+        #{likeStatus,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        #{pages,jdbcType=VARCHAR},
+      </if>
+      <if test="isbn != null">
+        #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="binding != null">
+        #{binding,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null">
+        #{pubdate,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        #{translator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spencer.springboot.po.Book">
+    update book
+    <set>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="favNums != null">
+        fav_nums = #{favNums,jdbcType=BIGINT},
+      </if>
+      <if test="largeImage != null">
+        large_image = #{largeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="likeStatus != null">
+        like_status = #{likeStatus,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        pages = #{pages,jdbcType=VARCHAR},
+      </if>
+      <if test="isbn != null">
+        isbn = #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="binding != null">
+        binding = #{binding,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="pubdate != null">
+        pubdate = #{pubdate,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        translator = #{translator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spencer.springboot.po.Book">
+    update book
+    set author = #{author,jdbcType=VARCHAR},
+      fav_nums = #{favNums,jdbcType=BIGINT},
+      large_image = #{largeImage,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      like_status = #{likeStatus,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      sub_title = #{subTitle,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      pages = #{pages,jdbcType=VARCHAR},
+      isbn = #{isbn,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      binding = #{binding,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      pubdate = #{pubdate,jdbcType=VARCHAR},
+      translator = #{translator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="findAllBook" resultType="com.spencer.springboot.po.Book">
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spencer.springboot.dao.HotMapper">
+  <resultMap id="BaseResultMap" type="com.spencer.springboot.po.Hot">
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <insert id="insert" parameterType="com.spencer.springboot.po.Hot">
+    insert into hot (content)
+    values (#{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spencer.springboot.po.Hot">
+    insert into hot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

@@ -16,7 +16,7 @@ public interface ClassicMapper {
 
     int updateByPrimaryKey(Classic record);
 
-    void updateStatus(@Param("like_status")int like_status, @Param("id")int id, @Param("type")int type);
+    void updateStatus(@Param("like_status") int like_status, @Param("id") int id, @Param("type") int type);
 
     Classic selectLatest();
 
@@ -24,5 +24,5 @@ public interface ClassicMapper {
 
     Classic selectPrevious(@Param("indexes") int index);
 
-    Classic selectClassic(@Param("id") int id, @Param("type")int type);
+    Classic selectClassic(@Param("id") int id, @Param("type") int type);
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spencer.springboot.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.spencer.springboot.po.Comment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="book_id" jdbcType="BIGINT" property="bookId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="nums" jdbcType="BIGINT" property="nums" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, book_id, content, nums
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.spencer.springboot.po.Comment">
+    insert into comment (id, book_id, content, 
+      nums)
+    values (#{id,jdbcType=BIGINT}, #{bookId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
+      #{nums,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spencer.springboot.po.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="nums != null">
+        nums,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="nums != null">
+        #{nums,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spencer.springboot.po.Comment">
+    update comment
+    <set>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="nums != null">
+        nums = #{nums,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spencer.springboot.po.Comment">
+    update comment
+    set book_id = #{bookId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      nums = #{nums,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByBookId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    WHERE book_id = #{bookId}
+  </select>
+
+  <select id="selectByContent" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    WHERE book_id = #{bookId} AND content = #{content}
+  </select>
+</mapper>
