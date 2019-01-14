@@ -84,6 +84,7 @@
     <include refid="Base_Column_List" />
     from comment
     WHERE book_id = #{bookId}
+    ORDER BY nums
   </select>
 
   <select id="selectByContent" resultMap="BaseResultMap">

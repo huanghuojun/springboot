@@ -3,6 +3,8 @@ package com.spencer.springboot.dao;
 import com.spencer.springboot.po.Classic;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface ClassicMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -25,4 +27,6 @@ public interface ClassicMapper {
     Classic selectPrevious(@Param("indexes") int index);
 
     Classic selectClassic(@Param("id") int id, @Param("type") int type);
+
+    List<Classic> findAll();
 }

@@ -50,10 +50,49 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- 以下自己追加的 -->
+		<!-- 微信授权插件 -->
+		<!--<dependency>-->
+			<!--<groupId>com.github.binarywang</groupId>-->
+			<!--<artifactId>weixin-java-mp</artifactId>-->
+			<!--<version>3.1.0</version>-->
+		<!--</dependency>-->
+
+		<!-- 对象转换成json引入如下依赖 -->
+		<!-- 文档：https://www.yiibai.com/jackson/jackson_first_application.html#article-start -->
+		<!--<dependency>-->
+			<!--<groupId>com.fasterxml.jackson.core</groupId>-->
+			<!--<artifactId>jackson-databind</artifactId>-->
+			<!--<version>2.7.4</version>-->
+		<!--</dependency>-->
+
+		<!-- 本地jar -->
+		<dependency>
+			<groupId>genki</groupId>
+			<artifactId>genki-common-tools</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<!-- 分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
-			<version>5.0.4</version>
+			<version>5.1.0</version>
+		</dependency>
+		<!-- springboot对mybatis的整合支持还是比较苛刻的，版本不兼容问题比较严重，pageHelper分页插件也是一样，不是最新的版本就没有问题，有时需要降低版本进行支持，这里的版本是调试通过可以用的版本，其他应该还有可以匹配的版本，但是没有去测试 -->
+		<!-- spring boot pagehelper autoconfigure依赖 版本有兼容性问题 第一种方式依赖的包-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!-- spring boot 整合pagehelper依赖 版本有兼容性问题 第一种方式依赖的包-->
+		<!--
+			maven的pagehelper-spring-boot-starter这个依赖，提供了自动配置分页插件的功能
+			所以不需要在mybatis-config 或者application.yml 配置拦截器
+		 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.3</version>
 		</dependency>
 		<!-- swagger -->
 		<dependency>

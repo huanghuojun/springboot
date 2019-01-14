@@ -236,4 +236,18 @@
     <include refid="Base_Column_List" />
     from book
   </select>
+
+  <select id="searchBook" resultType="com.spencer.springboot.po.Book">
+    select
+    <include refid="Base_Column_List" />
+    from book
+    WHERE author LIKE CONCAT('%',#{key},'%')
+    or title LIKE CONCAT('%',#{key},'%')
+    or summary LIKE CONCAT('%',#{key},'%')
+    or binding LIKE CONCAT('%',#{key},'%')
+    or publisher LIKE CONCAT('%',#{key},'%')
+    or sub_title LIKE CONCAT('%',#{key},'%')
+    or category LIKE CONCAT('%',#{key},'%')
+    or translator LIKE CONCAT('%',#{key},'%')
+  </select>
 </mapper>

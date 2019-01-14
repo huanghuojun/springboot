@@ -1,6 +1,9 @@
 package com.spencer.springboot.service;
 
+import com.spencer.springboot.po.Book;
 import com.spencer.springboot.po.Hot;
+
+import java.util.List;
 
 /**
  * @Author Spencer
@@ -11,4 +14,6 @@ public interface IHotService {
     int insert(Hot record);
 
     int insertSelective(Hot record);
+
+    List<Hot> getHotKeyword();
 }

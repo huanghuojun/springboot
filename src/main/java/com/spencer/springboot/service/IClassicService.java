@@ -3,6 +3,8 @@ package com.spencer.springboot.service;
 import com.spencer.springboot.model.LikeInfo;
 import com.spencer.springboot.po.Classic;
 
+import java.util.List;
+
 /**
  * @Author Spencer
  * @Date 2018/12/18 17:36
@@ -25,5 +27,7 @@ public interface IClassicService {
     Classic getPrevious(int index);
 
     LikeInfo getLikeIndo(int id, int type);
+
+    List<Classic> getMyPavor();
 
 }

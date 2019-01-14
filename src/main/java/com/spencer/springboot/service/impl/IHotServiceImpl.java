@@ -1,11 +1,12 @@
 package com.spencer.springboot.service.impl;
 
-import com.spencer.springboot.dao.BookMapper;
 import com.spencer.springboot.dao.HotMapper;
 import com.spencer.springboot.po.Hot;
 import com.spencer.springboot.service.IHotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author Spencer
@@ -26,5 +27,10 @@ public class IHotServiceImpl implements IHotService {
     @Override
     public int insertSelective(Hot record) {
         return hotMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Hot> getHotKeyword() {
+        return hotMapper.findAllHotKeyword();
     }
 }

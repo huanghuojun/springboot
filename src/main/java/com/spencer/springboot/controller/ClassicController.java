@@ -12,6 +12,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author Spencer
  * @Date 2018/12/14 10:53
@@ -26,6 +28,18 @@ public class ClassicController {
 
     @Autowired
     private IClassicService classicService;
+
+    @ApiOperation(value = "获取我喜欢的期刊", notes = "获取我喜欢的期刊")
+    @RequestMapping(value = "/favor", method= RequestMethod.GET)
+    @ResponseBody
+    public DataResponse getMyFavor() {
+        List<Classic> list = classicService.getMyPavor();
+        if(list != null){
+            return new DataResponse(list, 200);
+        }else{
+            return new DataResponse("没有喜欢期刊", 201);
+        }
+    }
 
     @ApiOperation(value = "获取最新一期", notes = "获取最新一期")
     @RequestMapping(value = "/latest", method= RequestMethod.GET)

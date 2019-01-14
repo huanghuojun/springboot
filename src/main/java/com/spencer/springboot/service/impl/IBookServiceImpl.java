@@ -53,4 +53,9 @@ public class IBookServiceImpl implements IBookService {
     public List<Book> getHotList() {
         return bookMapper.findAllBook();
     }
+
+    @Override
+    public List<Book> searchKey(String key) {
+        return bookMapper.searchBook(key);
+    }
 }

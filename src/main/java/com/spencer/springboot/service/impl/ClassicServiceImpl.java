@@ -7,6 +7,8 @@ import com.spencer.springboot.service.IClassicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author Spencer
  * @Date 2018/12/18 17:36
@@ -65,5 +67,10 @@ public class ClassicServiceImpl implements IClassicService {
             return likeInfo;
         }
         return null;
+    }
+
+    @Override
+    public List<Classic> getMyPavor() {
+        return classicMapper.findAll();
     }
 }

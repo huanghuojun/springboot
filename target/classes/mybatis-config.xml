@@ -28,14 +28,18 @@
     <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
 </settings>
 
+<!--
+    maven的pagehelper-spring-boot-starter这个依赖，提供了自动配置分页插件的功能
+    所以不需要在mybatis-config 或者application.yml 配置拦截器
+ -->
 <!-- 分页助手 -->
-<plugins>
-    <plugin interceptor="com.github.pagehelper.PageInterceptor">
-        <property name="helperDialect" value="mysql"/>
-        <property name="reasonable" value="true"/>
-        <property name="supportMethodsArguments" value="true"/>
-        <property name="params" value="count=countSql"/>
-    </plugin>
-</plugins>
+<!--<plugins>-->
+    <!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+        <!--<property name="helperDialect" value="mysql"/>-->
+        <!--<property name="reasonable" value="true"/>-->
+        <!--<property name="supportMethodsArguments" value="true"/>-->
+        <!--<property name="params" value="count=countSql"/>-->
+    <!--</plugin>-->
+<!--</plugins>-->
 
 </configuration>

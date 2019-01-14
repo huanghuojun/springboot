@@ -21,5 +21,7 @@
       </if>
     </trim>
   </insert>
- 
+  <select id="findAllHotKeyword" resultType="com.spencer.springboot.po.Hot">
+    select * from hot
+  </select>
 </mapper>

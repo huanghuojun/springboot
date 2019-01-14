@@ -23,4 +23,6 @@ public interface IBookService {
     int updateByPrimaryKey(Book record);
 
     List<Book> getHotList();
+
+    List<Book> searchKey(String key);
 }
